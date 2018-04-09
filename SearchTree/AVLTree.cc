@@ -1,4 +1,5 @@
 #include "SearchTree.h"
+#include <vector>
 
 template<typename ElementType>
 class AVLTree :public SearchTree<ElementType> {
@@ -40,9 +41,11 @@ public:
 		return true;
 	}
 
-	void printTree() const {
+	void printTree() {
 		printTree(mTreeRoot);
 	}
+
+	void printSort() const{}
 private:
 	struct AVLNode{
 		AVLNode* leftChild;
@@ -231,11 +234,37 @@ private:
 		root = nullptr;
 	}
 
-	void printTree(AVLNode* root) const {
+	void printLevel(std::vector<AVLNode*>& curLevel, std::vector<AVLNode*>& nextLevel) {
+		nextLevel.clear();
+		
+		for (int index = 0; index < curLevel.size(); index++) {
+			AVLNode* curNode = curLevel[index];
+			if (curNode) {
+				std::cout << curLevel[index]->curElem << " ";
+				if (curLevel[index]->leftChild || curLevel[index]->rightChild) {
+					nextLevel.resize(curLevel.size() * 2);
+					nextLevel[2 * index] = curLevel[index]->leftChild;
+					nextLevel[2 * index + 1] = curLevel[index]->rightChild;
+				}
+			}
+			else{
+				std::cout << -1 << " ";
+			}
+		}
+		std::cout << std::endl;
+	}
+
+	void printTree(AVLNode* root){
 		if (!root)
 			return;
-		printTree(root->leftChild);
-		std::cout << root->curElem << " ";
-		printTree(root->rightChild);
+		AVLNode* tree = root;
+		std::vector<AVLNode*> curLevel;
+		std::vector<AVLNode*> nextLevel;
+		curLevel.push_back(tree);
+		while (!curLevel.empty()){
+			printLevel(curLevel, nextLevel);
+			curLevel.clear();
+			curLevel = nextLevel;
+		}
 	}
 };

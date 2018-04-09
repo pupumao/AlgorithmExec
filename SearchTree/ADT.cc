@@ -40,7 +40,7 @@ public:
 		printSort(mTreeRoot);
 	}
 
-	void printTree() const {
+	void printTree() {
 		printTree(mTreeRoot);
 	}
 private:
@@ -82,7 +82,7 @@ private:
 			ADTNode* origin = root;
 			if (root->rightChild) {
 				ADTNode* acceptance = root->leftChild;
-				ADTNode* candidate = findMin(root->rightChild);
+				const ADTNode* candidate = findMin(root->rightChild);
 				root->curElem = candidate->curElem;
 				remove(root->rightChild, candidate->curElem);
 			}
@@ -126,19 +126,23 @@ private:
 	void printSort(ADTNode* root) const {
 		if (!root)
 			return;
-		printTree(root->leftChild);
+		printSort(root->leftChild);
 		std::cout << root->curElem << " ";
-		printTree(root->rightChild);
+		printSort(root->rightChild);
 	}
 	
 	void printLevel(std::vector<ADTNode*>& curLevel, std::vector<ADTNode*>& nextLevel) {
 		nextLevel.clear();
+		
 		for (int index = 0; index < curLevel.size(); index++) {
 			ADTNode* curNode = curLevel[index];
 			if (curNode) {
 				std::cout << curLevel[index]->curElem << " ";
-				nextLevel[2 * index] = curLevel[index]->leftChild;
-				nextLevel[2 * index + 1] = curLevel[index]->rightChild;
+				if (curLevel[index]->leftChild || curLevel[index]->rightChild) {
+					nextLevel.resize(curLevel.size() * 2);
+					nextLevel[2 * index] = curLevel[index]->leftChild;
+					nextLevel[2 * index + 1] = curLevel[index]->rightChild;
+				}
 			}
 			else{
 				std::cout << -1 << " ";
@@ -147,12 +151,13 @@ private:
 		std::cout << std::endl;
 	}
 
-	void printTree(ADTNode* root) const {
+	void printTree(ADTNode* root){
 		if (!root)
 			return;
+		ADTNode* tree = root;
 		std::vector<ADTNode*> curLevel;
 		std::vector<ADTNode*> nextLevel;
-		curLevel.push_back(root);
+		curLevel.push_back(tree);
 		while (!curLevel.empty()){
 			printLevel(curLevel, nextLevel);
 			curLevel.clear();

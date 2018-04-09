@@ -12,5 +12,6 @@ public:
 	virtual void makeEmpty() = 0;
 	virtual bool isEmpty() const = 0;
 	virtual bool contains(const ElementType elem) const= 0;
-	virtual void printTree() const= 0;
+	virtual void printTree() const = 0;
+	virtual void printSort() const = 0;
 };

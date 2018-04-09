@@ -1,12 +1,13 @@
 #include "AVLTree.cc"
+#include "ADT.cc"
 #include <iostream>
 #include <cstdlib>
 
 int main() {
-	SearchTree<int>* testTree = new AVLTree<int>;
+	SearchTree<int>* testTree = new ADT<int>;
 
-	int treeSize = 10000;
-	int elemMax = 20000;
+	int treeSize = 100;
+	int elemMax = 200;
 	int elemMin = 0;
 	int i = 0;
 	for (i = 0; i < 10; i++) {

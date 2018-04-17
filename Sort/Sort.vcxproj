@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseSort.cc" />
     <ClCompile Include="InsertSort.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="MergeSort.cc" />

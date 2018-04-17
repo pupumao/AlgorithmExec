@@ -1,5 +1,6 @@
 #include "InsertSort.cc"
 #include "MergeSort.cc"
+#include "BaseSort.cc"
 #include <iostream>
 
 void generateSourceVector(std::vector<int>& sourceVector, int size, int ulimit) {
@@ -20,8 +21,8 @@ void printSourceVector(const std::vector<comparable>& sourceVector) {
 }
 
 int main() {
-	ISort<int>* sortMethod = new MergeSort<int>;
-	int sourceSize = 20;
+	ISort<int>* sortMethod = new BaseSort<int>;
+	int sourceSize = 100000;
 	int uLimit = 10000;
 	std::vector<int> sourceVector;
 	generateSourceVector(sourceVector, sourceSize, uLimit);

@@ -23,6 +23,7 @@
     <ClCompile Include="InsertSort.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="MergeSort.cc" />
+    <ClCompile Include="QuickSort.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ISort.h" />
@@ -93,6 +94,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

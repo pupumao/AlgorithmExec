@@ -1,4 +1,4 @@
-#include "Heap.cc"
+#include "Heap.h"
 #include <iostream>
 #include <cassert>
 
@@ -24,12 +24,15 @@ void printSourceVector(const std::vector<comparable>& sourceVector, bool verify 
 }
 
 int main() {
+	int testSize = 20;
+	int ulimit = 1000;
 	std::vector<int> sourceVector;
+	generateSourceVector(sourceVector, testSize, ulimit);
 	BinaryHeap<int> testHeap(sourceVector);
 	printSourceVector<int>(sourceVector);
 	while (!testHeap.isEmpty()){
 		int curMin = -1;
-		testHeap.deleteMin(curMin);
+		testHeap.deleteTop(curMin);
 		std::cout << curMin << " ";
 	}
 	std::cout << std::endl;

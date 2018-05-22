@@ -1,8 +1,13 @@
 #pragma once
 
+class UnionFindImp;
 class UnionFind{
 public:
-	//virtual void inputElement(int elem) = 0;
-	virtual void UnionTo(int elemA, int elemB) = 0;
-	virtual bool isUnioned(int elemA, int elemB) = 0;
+	UnionFind(int elemNum);
+	~UnionFind();
+
+	void UnionTo(int elemA, int elemB);
+	bool isUnioned(int elemA, int elemB);
+private:
+	UnionFindImp * mImp;
 };

@@ -2,8 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="UnionFind.cc" />
+    <ClCompile Include="testMain.cc" />
+    <ClCompile Include="Puzzle.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnionFind.h" />
+    <ClInclude Include="Puzzle.h" />
   </ItemGroup>
 </Project>
